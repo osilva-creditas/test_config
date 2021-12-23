@@ -10,15 +10,19 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/base:stable
-        environment:
-            MULE_APP_NAME: $TEXT_VALUE
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World! $TEXT_VALUE "
+          name: "set var"  
+          command: |
+            echo 'export $MULE_APP_NAME=$TEXT_VALUE' >> $BASH_ENV            
+            source $BASH_ENV    
+      - run:
+          name: "say hello"  
+          command: |
+            echo 'Hello $MULE_APP_NAME '
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -26,4 +30,4 @@ workflows:
   say-hello-workflow:     
     jobs:
       - say-hello:
-          context: PROD
+          context: PROD          
