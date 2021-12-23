@@ -15,14 +15,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "set var"
-          command: |
-            echo 'export MULE_APP_NAME=$TEXT_VALUE' >> $BASH_ENV
-            source $BASH_ENV
-      - run:
           name: "say hello"
           command: |
-            echo "Hello $MULE_APP_NAME "
+            echo "Hello $TEXT_VALUE "
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
