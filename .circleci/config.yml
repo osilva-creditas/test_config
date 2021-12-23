@@ -20,6 +20,7 @@ jobs:
           name: "set var"  
           command: |
             echo 'export $MULE_APP_NAME=$TEXT_VALUE' >> $BASH_ENV            
+            echo "Var1 $MULE_APP_NAME "
             source $BASH_ENV    
       - run:
           name: "say hello"  
