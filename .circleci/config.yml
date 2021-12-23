@@ -25,4 +25,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello:
-          context: PROD
+          context: mulesoft-<< pipeline.git.branch >>
