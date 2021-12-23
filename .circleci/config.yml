@@ -11,7 +11,7 @@ jobs:
     docker:
       - image: cimg/base:stable
         environment:
-            MULE_APP_NAME: ${PRO_FOO}
+            MULE_APP_NAME: ${TEXT_VALUE}
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -23,6 +23,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  say-hello-workflow:     
     jobs:
-      - say-hello
+      - say-hello:
+          context: PROD
