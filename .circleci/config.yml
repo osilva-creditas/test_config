@@ -17,9 +17,8 @@ jobs:
       - run:
           name: "set var"
           command: |
-            echo 'export $MULE_APP_NAME=$TEXT_VALUE' >> $BASH_ENV
+            echo 'export MULE_APP_NAME=$TEXT_VALUE' >> $BASH_ENV
             source $BASH_ENV
-            echo "Var2 $MULE_APP_NAME "
       - run:
           name: "say hello"
           command: |
